@@ -19,5 +19,7 @@ namespace DrivingSchool.Models
         public string Description { get; set; } = string.Empty;
 
         public string? ImageUrl { get; set; }
+
+        public ICollection<CarsAvailable> CarsAvailable { get; set; }
     }
 }

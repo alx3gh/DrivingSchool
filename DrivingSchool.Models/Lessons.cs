@@ -27,5 +27,7 @@ namespace DrivingSchool.Models
 
         [ForeignKey("DriversId")]
         public Drivers Drivers { get; set; } = null!;
+
+        public ICollection<UserLessons> UserLessons { get; set; }
     }
 }

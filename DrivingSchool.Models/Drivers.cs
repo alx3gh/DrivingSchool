@@ -28,5 +28,7 @@ namespace DrivingSchool.Models
 
         [ForeignKey("TrackId")]
         public Track Track { get; set; }
+
+        public ICollection<Lessons> Lessons { get; set; } = new List<Lessons>();
     }
 }

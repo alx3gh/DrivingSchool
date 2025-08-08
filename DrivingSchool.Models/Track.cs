@@ -22,5 +22,8 @@ namespace DrivingSchool.Models
         public string Description { get; set; } = string.Empty;
 
         public string? ImageUrl { get; set; }
+
+        public ICollection<Drivers> Drivers { get; set; } = new List<Drivers>();
+        public ICollection<Activity> Activity { get; set; } = new List<Activity>();
     }
 }
