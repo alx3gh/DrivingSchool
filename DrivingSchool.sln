@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrivingSchool", "DrivingSch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrivingSchool.Models", "DrivingSchool.Models\DrivingSchool.Models.csproj", "{29415FB2-DCFD-4951-83B4-75EB9AD53AA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrivingSchool.ModelsCommon", "DrivingSchool.ModelsCommon\DrivingSchool.ModelsCommon.csproj", "{C168840D-15AA-468B-867A-B8CC373CDF81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{29415FB2-DCFD-4951-83B4-75EB9AD53AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29415FB2-DCFD-4951-83B4-75EB9AD53AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29415FB2-DCFD-4951-83B4-75EB9AD53AA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C168840D-15AA-468B-867A-B8CC373CDF81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C168840D-15AA-468B-867A-B8CC373CDF81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C168840D-15AA-468B-867A-B8CC373CDF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C168840D-15AA-468B-867A-B8CC373CDF81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
