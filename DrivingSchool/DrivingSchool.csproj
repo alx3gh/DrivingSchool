@@ -28,4 +28,16 @@
     <ProjectReference Include="..\DrivingSchool.ViewModels\DrivingSchool.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Pages\Account\" />
+    <Folder Include="Views\Activity\" />
+    <Folder Include="Views\Cars\" />
+    <Folder Include="Views\Drivers\" />
+    <Folder Include="Views\Error\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Lessons\" />
+    <Folder Include="Views\MyLessons\" />
+    <Folder Include="Views\Track\" />
+  </ItemGroup>
+
 </Project>
