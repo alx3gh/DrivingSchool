@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CarsViewModel\" />
+    <ProjectReference Include="..\DrivingSchool.Models\DrivingSchool.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DrivingSchool.Models\DrivingSchool.Models.csproj" />
+    <Folder Include="CarsViewModel\" />
   </ItemGroup>
 
 </Project>

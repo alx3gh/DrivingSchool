@@ -5,7 +5,7 @@
 namespace DrivingSchool.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Migr2 : Migration
+    public partial class InitialDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

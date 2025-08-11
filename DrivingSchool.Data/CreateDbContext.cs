@@ -8,7 +8,7 @@ namespace DrivingSchool.Data
         public DrivingSchoolDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<DrivingSchoolDbContext>();
-            optionsBuilder.UseSqlServer("Server=DESKTOP-R5FGUF6\\SQLEXPRESS;Database=DrivingSchool;Trusted_Connection=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-R5FGUF6\\SQLEXPRESS;Database=DrivingSchoolDB;Trusted_Connection=True;TrustServerCertificate=True");
 
             return new DrivingSchoolDbContext(optionsBuilder.Options);
         }
