@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DrivingSchool.Models\DrivingSchool.Models.csproj" />
+    <ProjectReference Include="..\DrivingSchool.ViewModels\DrivingSchool.ViewModels.csproj" />
   </ItemGroup>
 
   <ItemGroup>

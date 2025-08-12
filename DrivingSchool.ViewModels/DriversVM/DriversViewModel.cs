@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DrivingSchool.ViewModels.Drivers
+namespace DrivingSchool.ViewModels.DriversVM
 {
     public class DriversViewModel
     {

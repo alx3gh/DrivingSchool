@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DrivingSchool.ViewModels.Lessons
+namespace DrivingSchool.ViewModels.LessonsVM
 {
     public class LessonsViewModel
     {
