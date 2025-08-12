@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DrivingSchool.ViewModels.ActivityViewModel
+namespace DrivingSchool.ViewModels.Activity
 {
     public class CarsAvailableViewModel
     {
