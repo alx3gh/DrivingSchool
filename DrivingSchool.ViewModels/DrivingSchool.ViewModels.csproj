@@ -10,8 +10,4 @@
     <ProjectReference Include="..\DrivingSchool.Models\DrivingSchool.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Cars\" />
-  </ItemGroup>
-
 </Project>

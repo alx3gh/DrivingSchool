@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DrivingSchool.ViewModels.Activity;
-using DrivingSchool.ViewModels.Drivers;
+using DrivingSchool.ViewModels.ActivityVM;
+using DrivingSchool.ViewModels.DriversVM;
 
 
-namespace DrivingSchool.ViewModels.Track
+namespace DrivingSchool.ViewModels.TracksVM
 {
     public class DetailsTrackViewModel
     {

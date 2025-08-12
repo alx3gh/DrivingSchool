@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DrivingSchool.ViewModels.Track
+namespace DrivingSchool.ViewModels.ActivityVM
 {
-    public class TrackViewModel
+    public class ActivityViewModel
     {
         public int Id { get; set; }
 
-        public string Name { get; set; } = string.Empty;
-
-        public string Location { get; set; } = string.Empty;
+        public string Name { get; set; }
 
         public string? ImageUrl { get; set; }
     }

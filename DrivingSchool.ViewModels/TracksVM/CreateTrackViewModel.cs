@@ -5,20 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DrivingSchool.ViewModels.Track
+namespace DrivingSchool.ViewModels.TracksVM
 {
-    public class EditTrackViewModel
+    public class CreateTrackViewModel
     {
-        public int Id { get; set; }
-
         [Required]
         public string Name { get; set; }
+
 
         [Required]
         public string Description { get; set; }
 
+
         [Required]
         public string Location { get; set; }
+
 
         public string? ImageUrl { get; set; }
     }
