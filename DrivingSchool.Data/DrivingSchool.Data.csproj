@@ -21,8 +21,4 @@
     <ProjectReference Include="..\DrivingSchool.ViewModels\DrivingSchool.ViewModels.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Configurations\" />
-  </ItemGroup>
-
 </Project>
