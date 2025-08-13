@@ -1,4 +1,5 @@
-﻿using DrivingSchool.Models;
+﻿using DrivingSchool.Data.Configurations;
+using DrivingSchool.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -35,8 +36,20 @@ namespace DrivingSchool.Data
 
         public DbSet<UserLessons> UserLessons { get; set; }
 
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
+            var roles = new RolesConfiguration();
+            builder.ApplyConfiguration<IdentityRole>(roles);
+
+            var user = new UserConfiguration();
+            builder.ApplyConfiguration<AppUser>(user);
+
+            var admin = new AdminConfiguration();
+            builder.ApplyConfiguration<IdentityUserRole<string>>(admin);
+
+
             base.OnModelCreating(builder);
 
             builder.Entity<CarsAvailable>()

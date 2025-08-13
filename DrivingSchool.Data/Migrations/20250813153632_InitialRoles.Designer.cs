@@ -4,6 +4,7 @@ using DrivingSchool.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DrivingSchool.Data.Migrations
 {
     [DbContext(typeof(DrivingSchoolDbContext))]
-    partial class DrivingSchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250813153632_InitialRoles")]
+    partial class InitialRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -394,13 +397,6 @@ namespace DrivingSchool.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "9c9d7d8b-b2f6-4a3d-a7b1-4b75e7c26e59",
-                            RoleId = "Administrator"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -427,24 +423,6 @@ namespace DrivingSchool.Data.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.HasDiscriminator().HasValue("AppUser");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "9c9d7d8b-b2f6-4a3d-a7b1-4b75e7c26e59",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "9b10193a-ba13-4b7f-a003-faffffa2013b",
-                            Email = "admin1@abv.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN1@ABV.COM",
-                            NormalizedUserName = "ADMIN1",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGodvuv2c1hxgljqQE86ZncmDd90MotEbNxPU9Wvn8b2lQuDvb9riac2BnVMt5z+uw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "SecurityStampTest01",
-                            TwoFactorEnabled = false,
-                            UserName = "admin1"
-                        });
                 });
 
             modelBuilder.Entity("DrivingSchool.Models.Activity", b =>
