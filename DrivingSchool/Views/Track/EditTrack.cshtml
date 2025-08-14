@@ -1,42 +1,41 @@
-﻿@model DrivingSchool.Models.Track
+﻿@model DrivingSchool.ViewModels.TracksVM.EditTrackViewModel
+@Html.AntiForgeryToken()
 
-<h4>Track</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="EditTrack">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
-                <input asp-for="Location" class="form-control" />
-                <span asp-validation-for="Location" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <h1>Edit Track Details</h1>
+    <form asp-action="EditTrack" method="post">
+        <input type="hidden" asp-for="Id" />
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+        <div class="form-group">
+            <label asp-for="Name">Edit - Track Name</label>
+            <input asp-for="Name" class="form-control" autocomplete="off" placeholder="Enter the Track name" required />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Location">Edit - Location</label>
+            <input asp-for="Location" class="form-control" autocomplete="off" placeholder="Enter the Track Location" required />
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ImageUrl">Edit - Image URL</label>
+            <input asp-for="ImageUrl" class="form-control" autocomplete="off" placeholder="Paste the image URL here (optional)" />
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description">Edit - Description</label>
+            <textarea asp-for="Description" class="form-control" rows="5" placeholder="Provide a brief description" required></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="this btn btn-primary">Save Changes</button>
+    </form>
+</body>
+</html>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

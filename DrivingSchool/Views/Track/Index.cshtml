@@ -1,36 +1,54 @@
-﻿@model DrivingSchool.Models.Track
+﻿@model IEnumerable<DrivingSchool.ViewModels.TracksVM.TrackViewModel>
+@Html.AntiForgeryToken()
 
-<div>
-    <h4>Track</h4>
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <h1>Our Tracks</h1>
+    @if (User!.IsInRole("Administrator"))
+    {
+        <a asp-action="CreateTrack" class="btn btn-primary">Create Track</a>
+    }
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+    @if (!Model.Any())
+    {
+        <h5>No tracks available at the moment.</h5>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var track in Model)
+            {
+                <div class="card col-3" style="width: 20rem;">
+                    @if (!string.IsNullOrEmpty(track.ImageUrl))
+                    {
+                        <img src="@track.ImageUrl" class="card-img-top">
+                    }
+                    else
+                    {
+                        <img src="~/images/TrackPH.png" class="card-img-top">
+                    }
+                    <div class="card-body">
+                        <h4 class="card-title">@track.Name</h4>
+                        <p class="mb-0"><span class="fw-bold">Location: </span>@track.Location</p>
+                    </div>
+                    <div class="row gx-0">
+                        <div class="col-6 px-1">
+                            <a asp-controller="Track" asp-action="TrackDetails" asp-route-id="@track.Id" class="btn this">Details</a>
+                            @if (User!.IsInRole("Administrator"))
+                            {
+                                <a asp-controller="Track" asp-action="EditTrack" asp-route-id="@track.Id" class="btn this">Edit</a>
+                                <form asp-controller="Track" asp-action="Delete" method="post">
+                                    <input type="hidden" name="id" value="@track.Id" />
+                                    <button type="submit" class="btn this-remove" onclick="return confirm('Are you sure you want to delete @track.Name?')">Delete</button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</body>
+</html>
