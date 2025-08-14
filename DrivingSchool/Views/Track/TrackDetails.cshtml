@@ -1,36 +1,240 @@
-﻿@model DrivingSchool.Models.Track
+﻿@model DrivingSchool.ViewModels.TracksVM.DetailsTrackViewModel
+@Html.AntiForgeryToken()
 
-<div>
-    <h4>Track</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Model.Name</title>   
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 150px;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px 50px;
+            text-align: center;
+            border-radius: 25px;
+            background: rgba(25, 0, 150, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 40px;
+        }
+
+        .track-image img {
+            max-width: 50%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .info {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #dcdcdc;
+            margin: 25px 0px;
+        }
+
+        .columns {
+            display: flex;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .column {
+            flex: 1;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+        }
+
+            .column h2 {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+
+            .column ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+
+                .column ul li {
+                    margin-bottom: 10px;
+                    font-size: 1.2em;
+                    color: #dcdcdc;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                    padding-bottom: 5px;
+                }
+
+        .btn-warning {
+            color: #fff !important;
+            border: none !important;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+            .btn-warning:hover {
+                color: #fff !important;
+            }
+
+
+        footer .container {
+            padding: 0px;
+        }
+
+        .this-card {
+            position: relative;
+            overflow: visible;
+            width: 95%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 auto;
+        }
+
+            .this-card:hover {
+                transform: scale(1.05);
+            }
+
+            .this-card img {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+                border-radius: 10px;
+                display: block;
+            }
+
+        .this-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: gray;
+            padding: 15px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+            .this-card-overlay h4 {
+                margin: 0;
+                font-size: 30px;
+            }
+
+        .this-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .this-column {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="track-image">
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <img src="@Model.ImageUrl" alt="@Model.Name" />
+        }
+    </div>
+    <h1>@Model.Name</h1>
+    <div class="info">
+        <p><strong>Location:</strong> @Model.Location</p>
+        <p><strong>Description:</strong> @Model.Description</p>
+    </div>
+    <div class="columns">
+        <div class="column">
+            <h2>Activity</h2>
+            @if (User!.IsInRole("Administrator"))
+            {
+                <a asp-controller="Activity" asp-action="CreateActivity" asp-route-trackId="@Model.Id" class="btn btn-warning btn-sm mb-2 w-100">Create Activity</a>
+            }
+            <hr />
+            @if (Model.Activity != null && Model.Activity.Any())
+            {
+                <div class="this-list">
+                    @foreach (var activity in Model.Activity)
+                    {
+                        <div class="this-card">
+                            <a asp-controller="Activity" asp-action="DetailsActivity" asp-route-id="@activity.Id" style="text-decoration: none;">
+                                @if (!string.IsNullOrEmpty(activity.ImageUrl))
+                                {
+                                    <img src="@activity.ImageUrl" alt="@activity.Name" />
+                                }
+                                <div class="this-card-overlay">
+                                    <h4>@activity.Name</h4>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p>No activities available.</p>
+            }
+        </div>
+
+        <div class="column">
+            <h2>Drivers</h2>
+            @if (User!.IsInRole("Administrator"))
+            {
+                <a asp-controller="Drivers" asp-action="CreateDrivers" asp-route-trackId="@Model.Id" class="btn btn-warning btn-sm mb-2 w-100">Create Drivers</a>
+            }
+            <hr />
+            @if (Model.Drivers != null && Model.Drivers.Any())
+            {
+                <div class="this-list">
+                    @foreach (var drivers in Model.Drivers)
+                    {
+                        <div class="this-card">
+                            <a asp-controller="Drivers" asp-action="DriversDetails" asp-route-Id="@drivers.Id" style="text-decoration: none;">
+                                @if (!string.IsNullOrEmpty(drivers.ImageUrl))
+                                {
+                                    <img src="@drivers.ImageUrl" alt="@drivers.Name" />
+                                }
+                                else
+                                {
+                                    <img src="~/images/DriversPH.png" alt="@drivers.Name" />
+                                }
+                                <div class="this-card-overlay">
+                                    <h4>@drivers.Name</h4>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p>No drivers available.</p>
+            }
+        </div>
+    </div>
+</body>
+</html>

@@ -1,42 +1,220 @@
-﻿@model DrivingSchool.Models.Drivers
+﻿@model DrivingSchool.ViewModels.DriversVM.DetailsDriversViewModel
+@Html.AntiForgeryToken()
 
-<div>
-    <h4>Drivers</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Age)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Age)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Bio)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Bio)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Track)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Track.Description)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Model.Name</title>
+    <style>
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 150px;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px 50px;
+            text-align: center;
+            border-radius: 25px;
+            background: rgba(25, 0, 150, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 40px;
+        }
+
+        .drivers-image img {
+            max-width: 70%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .description {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #dcdcdc;
+            margin: 25px 0px;
+        }
+
+        .lessons-list {
+            margin-top: 30px;
+        }
+
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .lesson-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+
+        .lesson-name {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .lesson-description {
+            font-size: 1.1em;
+            color: #dcdcdc;
+            margin-bottom: 20px;
+        }
+
+        .lesson-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+            .lesson-overlay h4 {
+                margin: 0;
+                font-size: 1.2em;
+            }
+
+        .lesson-buttons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .this {
+            margin-top: 25px;
+            color: #fff !important;
+            border: none !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+            .this:hover {
+                color: #fff !important;
+            }
+
+        .this-delete {
+            font-size: 1em !important;
+            margin-top: 25px;
+            background-color: #e53935 !important;
+            color: #fff !important;
+            border: none !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+            .this-delete:hover {
+                background-color: #ad0006 !important;
+                color: #fff !important;
+            }
+
+        footer .container {
+            padding: 0px;
+        }
+
+        .underline {
+            border-bottom: 3px solid rgba(255, 107, 255, 0.3);
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="drivers-image">
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <img src="@Model.ImageUrl" alt="@Model.Name" />
+        }
+    </div>
+
+    <h1>@Model.Name</h1>
+    <div class="description">
+        <p><strong>Age:</strong> @Model.Age</p>
+        <h3><strong class="underline">Biography</strong></h3>
+        <p>@Model.Bio</p>
+    </div>
+
+    <div class="lessons-list">
+        <h2>Lessons</h2>
+        <hr />
+        @if (Model.Lessons != null && Model.Lessons.Any())
+        {
+            <div class="lessons-grid">
+                @foreach (var lesson in Model.Lessons)
+                {
+                    <div class="lesson-item">
+                        <div class="lesson-name">@lesson.Name</div>
+                        <hr />
+                        <div class="lesson-description">
+                            <p><strong>Price:</strong> $@lesson.Price</p>
+                            <p>@lesson.Description</p>
+                        </div>
+                        <div class="lesson-buttons">
+                            @if (User.IsInRole("User"))
+                            {
+                                <form method="post" asp-controller="Lessons" asp-action="AddToMyLessons">
+                                    <input type="hidden" name="lessonId" value="@lesson.Id" />
+                                    <button type="submit" class="btn this">Sign up</button>
+                                </form>
+                            }
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                <form asp-controller="Lessons" asp-action="DeleteLessons" method="post">
+                                    <input type="hidden" name="id" value="@lesson.Id" />
+                                    <button type="submit" class="btn this-delete" style="width: 100%" onclick="return confirm('Are you sure you want to delete the lesson @lesson.Name')">Delete</button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>No lessons available.</p>
+        }
+    </div>
+
+    <div>
+        <a asp-controller="Track" asp-action="TrackDetails" asp-route-id="@Model.Track.Id" class="btn this">Back to Track</a>
+
+        @if (User.IsInRole("Administrator"))
+        {
+            <a asp-controller="Lessons" asp-action="CreateLessons" asp-route-driversId="@Model.Id" class="btn this">Add a Lessons</a>
+            <a asp-controller="Drivers" asp-action="EditDrivers" asp-route-id="@Model.Id" class="btn this">Edit Driver</a>
+
+            <form asp-controller="Drivers" asp-action="DeleteDrivers" asp-route-id="@Model.Id" method="post" style="display:inline;">
+                <button type="submit" class="btn this-delete" onclick="return confirm('Are you sure you want to delete @Model.Name?')">Delete Driver</button>
+            </form>
+        }
+    </div>
+</body>
+</html>

@@ -1,42 +1,99 @@
-﻿@model DrivingSchool.Models.Activity
+﻿@model DrivingSchool.ViewModels.ActivityVM.EditActivityViewModel
+@Html.AntiForgeryToken()
 
-<h4>Activity</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="EditActivity">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TrackId" class="control-label"></label>
-                <select asp-for="TrackId" class="form-control" asp-items="ViewBag.TrackId"></select>
-                <span asp-validation-for="TrackId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Activity</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            overflow-x: hidden;
+        }
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 30px 50px;
+            text-align: center;
+            border-radius: 25px;
+            background: rgba(25, 0, 150, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+        }
+
+        h1 {
+            font-size: 2.4em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin: 15px 0 5px 0;
+            display: inline-block;
+        }
+
+        textarea {
+            resize: none;
+            height: 150px;
+        }
+
+        .this {
+            color: #fff !important;
+            border: none !important;
+            width: 30%;
+        }
+
+            .this:hover {
+                color: #fff !important;
+            }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        footer .container {
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Activity</h1>
+    <form asp-action="EditActivity" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group">
+            <label asp-for="Name">Edit - Activity Name</label>
+            <input asp-for="Name" class="form-control" autocomplete="off" placeholder="Enter the new Activity name" required />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ImageUrl">Edit - Image URL</label>
+            <input asp-for="ImageUrl" class="form-control" placeholder="Edit the Image URL" />
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description">Edit - Description</label>
+            <textarea asp-for="Description" class="form-control" rows="5" placeholder="Edit the description" required></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="this btn btn-primary">Save Changes</button>
+    </form>
+</body>
+</html>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -3,6 +3,126 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 150px;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px 100px;
+            text-align: center;
+            border-radius: 25px;
+            background: rgba(25, 0, 150, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #e39ff6;
+            text-align: center;
+        }
+
+        .btn-primary {
+            color: #fff !important;
+            border: none !important;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+            .btn-primary:hover {
+                color: #fff !important;
+            }
+
+        .card {
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            color: #fff;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card:hover {
+                transform: scale(1.05);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+            }
+
+            .card img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+            }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.4em;
+            color: #e39ff6;
+        }
+
+        .this {
+            width: 100%;
+            color: #fff !important;
+            border: none !important;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+            .this:hover {
+                color: #fff !important;
+            }
+
+        .this-remove {
+            width: 100%;
+            font-size: 1em !important;
+            background-color: #e53935 !important;
+            color: #fff !important;
+            border: none !important;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+            .this-remove:hover {
+                background-color: #ad0006 !important;
+                color: #fff !important;
+            }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+
+        footer .container {
+            padding: 0px;
+        }
+
+    </style>
+</head>
 <body>
     <h1>Our Tracks</h1>
     @if (User!.IsInRole("Administrator"))

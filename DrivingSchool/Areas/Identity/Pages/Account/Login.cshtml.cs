@@ -105,8 +105,13 @@ namespace DrivingSchool.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
+            var user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
 
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            if (user == null)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid E-mail.");
+                return Page();
+            }
 
             if (ModelState.IsValid)
             {
