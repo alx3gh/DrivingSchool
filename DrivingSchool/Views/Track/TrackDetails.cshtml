@@ -25,7 +25,7 @@
             padding: 30px 50px;
             text-align: center;
             border-radius: 25px;
-            background: rgba(25, 0, 150, 0.15);
+            background: orange;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(3px);
@@ -83,7 +83,7 @@
                 .column ul li {
                     margin-bottom: 10px;
                     font-size: 1.2em;
-                    color: #dcdcdc;
+                    color: blue;
                     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
                     padding-bottom: 5px;
                 }
@@ -115,6 +115,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin: 0 auto;
+            color:blue;
         }
 
             .this-card:hover {
@@ -134,7 +135,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            color: gray;
+            color: blue;
             padding: 15px;
             text-align: center;
             background: rgba(0, 0, 0, 0.7);
@@ -145,7 +146,7 @@
             .this-card-overlay h4 {
                 margin: 0;
                 font-size: 30px;
-                color: lightgray;
+                color: blue;
             }
 
         .this-list {
@@ -222,10 +223,6 @@
                                 @if (!string.IsNullOrEmpty(drivers.ImageUrl))
                                 {
                                     <img src="@drivers.ImageUrl" alt="@drivers.Name" />
-                                }
-                                else
-                                {
-                                    <img src="~/images/DriversPH.png" alt="@drivers.Name" />
                                 }
                                 <div class="this-card-overlay">
                                     <h4>@drivers.Name</h4>
