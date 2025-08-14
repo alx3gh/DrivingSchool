@@ -4,6 +4,7 @@ using DrivingSchool.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DrivingSchool.Data.Migrations
 {
     [DbContext(typeof(DrivingSchoolDbContext))]
-    partial class DrivingSchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250814175156_ConfigureLessons")]
+    partial class ConfigureLessons
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +51,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("TrackId");
 
-                    b.ToTable("Activity", (string)null);
+                    b.ToTable("Activity");
 
                     b.HasData(
                         new
@@ -98,30 +101,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cars", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "The Audi RS 4 is the high-performance variant of the Audi A4 range produced by Audi.",
-                            ImageUrl = "/images/car1.png",
-                            Name = "Audi RS4"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M.",
-                            ImageUrl = "/images/car2.png",
-                            Name = "BMW E46 M3"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "The Toyota Yaris WRC is a World Rally Car designed by Toyota Gazoo Racing WRT to compete in the World Rally Championship.",
-                            ImageUrl = "/images/car3.png",
-                            Name = "Toyota Yaris WRC"
-                        });
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("DrivingSchool.Models.CarsAvailable", b =>
@@ -136,24 +116,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("CarsId");
 
-                    b.ToTable("CarsAvailable", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            ActivityId = 1,
-                            CarsId = 1
-                        },
-                        new
-                        {
-                            ActivityId = 2,
-                            CarsId = 2
-                        },
-                        new
-                        {
-                            ActivityId = 3,
-                            CarsId = 3
-                        });
+                    b.ToTable("CarsAvailable");
                 });
 
             modelBuilder.Entity("DrivingSchool.Models.Drivers", b =>
@@ -185,7 +148,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("TrackId");
 
-                    b.ToTable("Drivers", (string)null);
+                    b.ToTable("Drivers");
 
                     b.HasData(
                         new
@@ -243,7 +206,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("DriversId");
 
-                    b.ToTable("Lessons", (string)null);
+                    b.ToTable("Lessons");
 
                     b.HasData(
                         new
@@ -297,7 +260,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Track", (string)null);
+                    b.ToTable("Track");
 
                     b.HasData(
                         new
@@ -338,7 +301,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("LessonsId");
 
-                    b.ToTable("UserLessons", (string)null);
+                    b.ToTable("UserLessons");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -580,13 +543,13 @@ namespace DrivingSchool.Data.Migrations
                         {
                             Id = "9c9d7d8b-b2f6-4a3d-a7b1-4b75e7c26e59",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "642be0a6-86fa-457a-8f8f-8f684a32acd1",
+                            ConcurrencyStamp = "e004159c-d47d-4ed9-bb86-5eec5a4bd194",
                             Email = "admin1@abv.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN1@ABV.COM",
                             NormalizedUserName = "ADMIN1",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAEfnDOy45fgsUfFdueEvaNEZXOQgRVixJzNN3qrWFcEZWUUOUwnNTjzEdzW9+gH7w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPuCWMjG1svIC0ENz8YPY2tkXhL7UXi9AAiykdgb4JAaVKHETQCbRcCUVW6I5j6Nyw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "SecurityStampTest01",
                             TwoFactorEnabled = false,

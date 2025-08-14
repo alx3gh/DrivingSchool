@@ -1,4 +1,5 @@
 ﻿using DrivingSchool.Data.Configurations;
+using DrivingSchool.Data.Migrations;
 using DrivingSchool.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -36,6 +37,12 @@ namespace DrivingSchool.Data
 
         public DbSet<UserLessons> UserLessons { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder
+                .ConfigureWarnings(warnings =>
+                    warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -49,6 +56,23 @@ namespace DrivingSchool.Data
             var admin = new AdminConfiguration();
             builder.ApplyConfiguration<IdentityUserRole<string>>(admin);
 
+            var track = new TrackConfiguration();
+            builder.ApplyConfiguration<Track>(track);
+
+            var activity = new ActivityConfiguration();
+            builder.ApplyConfiguration<Activity>(activity);
+
+            var drivers = new DriversConfiguration();
+            builder.ApplyConfiguration<Drivers>(drivers);
+
+            var lessons = new LessonsConfiguration();
+            builder.ApplyConfiguration<Lessons>(lessons);
+
+            var cars = new CarsConfiguration();
+            builder.ApplyConfiguration<Cars>(cars);
+
+            var carsAvailable = new CarsAvailableRelationConfiguration();
+            builder.ApplyConfiguration<CarsAvailable>(carsAvailable);
 
             base.OnModelCreating(builder);
 

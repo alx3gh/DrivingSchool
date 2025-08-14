@@ -4,6 +4,7 @@ using DrivingSchool.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DrivingSchool.Data.Migrations
 {
     [DbContext(typeof(DrivingSchoolDbContext))]
-    partial class DrivingSchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250814174704_ConfigureTrack")]
+    partial class ConfigureTrack
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,33 +51,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("TrackId");
 
-                    b.ToTable("Activity", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "This type of racing features stock cars (modified for racing) and is known for its oval track racing.",
-                            ImageUrl = "/images/activity1.png",
-                            Name = "Circuit Racing",
-                            TrackId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "This type of racing involves accelerating from a standing start over a short distance, often a quarter-mile, with the focus on speed and quick acceleration. ",
-                            ImageUrl = "/images/activity2.png",
-                            Name = "Drag Racing",
-                            TrackId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Rally races take place on public or closed roads, often in varied terrains and conditions. ",
-                            ImageUrl = "/images/activity3.png",
-                            Name = "Rally Racing",
-                            TrackId = 3
-                        });
+                    b.ToTable("Activity");
                 });
 
             modelBuilder.Entity("DrivingSchool.Models.Cars", b =>
@@ -98,30 +75,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cars", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "The Audi RS 4 is the high-performance variant of the Audi A4 range produced by Audi.",
-                            ImageUrl = "/images/car1.png",
-                            Name = "Audi RS4"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "The BMW M3 is a high-performance version of the BMW 3 Series, developed by BMW's in-house motorsport division, BMW M.",
-                            ImageUrl = "/images/car2.png",
-                            Name = "BMW E46 M3"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "The Toyota Yaris WRC is a World Rally Car designed by Toyota Gazoo Racing WRT to compete in the World Rally Championship.",
-                            ImageUrl = "/images/car3.png",
-                            Name = "Toyota Yaris WRC"
-                        });
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("DrivingSchool.Models.CarsAvailable", b =>
@@ -136,24 +90,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("CarsId");
 
-                    b.ToTable("CarsAvailable", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            ActivityId = 1,
-                            CarsId = 1
-                        },
-                        new
-                        {
-                            ActivityId = 2,
-                            CarsId = 2
-                        },
-                        new
-                        {
-                            ActivityId = 3,
-                            CarsId = 3
-                        });
+                    b.ToTable("CarsAvailable");
                 });
 
             modelBuilder.Entity("DrivingSchool.Models.Drivers", b =>
@@ -185,36 +122,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("TrackId");
 
-                    b.ToTable("Drivers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Age = 32,
-                            Bio = "Expert at racing techniques, has many laps on Nurburgring.",
-                            ImageUrl = "/images/driver1.png",
-                            Name = "Alexander Speed",
-                            TrackId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Age = 29,
-                            Bio = "Petrolhead and also a mechanic, Josh will teach you how to go fast",
-                            ImageUrl = "/images/driver2.png",
-                            Name = "Josh Anthony",
-                            TrackId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Age = 36,
-                            Bio = "Off-road and rally expert.",
-                            ImageUrl = "/images/driver3.png",
-                            Name = "Liam Ohaio",
-                            TrackId = 3
-                        });
+                    b.ToTable("Drivers");
                 });
 
             modelBuilder.Entity("DrivingSchool.Models.Lessons", b =>
@@ -243,33 +151,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("DriversId");
 
-                    b.ToTable("Lessons", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Learn competitive track driving techniques, from cornering to overtaking, in a controlled circuit environment.",
-                            DriversId = 1,
-                            Name = "Racing training with laps",
-                            Price = 260
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Master launch control, reaction time, and straight-line speed for head-to-head quarter-mile runs.",
-                            DriversId = 2,
-                            Name = "Drag Lessons",
-                            Price = 450
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Train in off-road driving skills, navigation, and handling across challenging terrain and conditions.",
-                            DriversId = 3,
-                            Name = "Rally & Off-Road Lessons",
-                            Price = 380
-                        });
+                    b.ToTable("Lessons");
                 });
 
             modelBuilder.Entity("DrivingSchool.Models.Track", b =>
@@ -297,7 +179,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Track", (string)null);
+                    b.ToTable("Track");
 
                     b.HasData(
                         new
@@ -338,7 +220,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("LessonsId");
 
-                    b.ToTable("UserLessons", (string)null);
+                    b.ToTable("UserLessons");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -580,13 +462,13 @@ namespace DrivingSchool.Data.Migrations
                         {
                             Id = "9c9d7d8b-b2f6-4a3d-a7b1-4b75e7c26e59",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "642be0a6-86fa-457a-8f8f-8f684a32acd1",
+                            ConcurrencyStamp = "17a822e8-1e2e-4981-a553-cc581d9103c1",
                             Email = "admin1@abv.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN1@ABV.COM",
                             NormalizedUserName = "ADMIN1",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAEfnDOy45fgsUfFdueEvaNEZXOQgRVixJzNN3qrWFcEZWUUOUwnNTjzEdzW9+gH7w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEH+vqSbprgn3l0sQKEWOlD1W348mzC4S9wGOk52vgXh6nliajcGYLz6PQwpKsHmknQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "SecurityStampTest01",
                             TwoFactorEnabled = false,

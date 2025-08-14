@@ -4,6 +4,7 @@ using DrivingSchool.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DrivingSchool.Data.Migrations
 {
     [DbContext(typeof(DrivingSchoolDbContext))]
-    partial class DrivingSchoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250814175408_ConfigureCarsAvailable")]
+    partial class ConfigureCarsAvailable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +51,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("TrackId");
 
-                    b.ToTable("Activity", (string)null);
+                    b.ToTable("Activity");
 
                     b.HasData(
                         new
@@ -98,7 +101,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cars", (string)null);
+                    b.ToTable("Cars");
 
                     b.HasData(
                         new
@@ -136,7 +139,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("CarsId");
 
-                    b.ToTable("CarsAvailable", (string)null);
+                    b.ToTable("CarsAvailable");
 
                     b.HasData(
                         new
@@ -185,7 +188,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("TrackId");
 
-                    b.ToTable("Drivers", (string)null);
+                    b.ToTable("Drivers");
 
                     b.HasData(
                         new
@@ -243,7 +246,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("DriversId");
 
-                    b.ToTable("Lessons", (string)null);
+                    b.ToTable("Lessons");
 
                     b.HasData(
                         new
@@ -297,7 +300,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Track", (string)null);
+                    b.ToTable("Track");
 
                     b.HasData(
                         new
@@ -338,7 +341,7 @@ namespace DrivingSchool.Data.Migrations
 
                     b.HasIndex("LessonsId");
 
-                    b.ToTable("UserLessons", (string)null);
+                    b.ToTable("UserLessons");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
