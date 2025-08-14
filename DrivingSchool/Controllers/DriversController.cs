@@ -123,7 +123,7 @@ namespace DrivingSchool.Controllers
             {
                 _context.Drivers.Update(driversToEdit);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("DriversDetails", new { id = drivers.Id });
+                return RedirectToAction("DetailsDrivers", new { id = drivers.Id });
             }
 
             return View(drivers);

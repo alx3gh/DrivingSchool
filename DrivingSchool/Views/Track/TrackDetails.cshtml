@@ -34,6 +34,7 @@
         h1 {
             font-size: 2.8em;
             margin-bottom: 40px;
+            color: blue;
         }
 
         .track-image img {
@@ -70,6 +71,7 @@
             .column h2 {
                 font-size: 1.8em;
                 margin-bottom: 20px;
+                color: #EBFF8F
             }
 
             .column ul {
@@ -87,6 +89,7 @@
                 }
 
         .btn-warning {
+            background-color: #27CCF5 !important;
             color: #fff !important;
             border: none !important;
             padding: 5px 10px;
@@ -95,6 +98,7 @@
         }
 
             .btn-warning:hover {
+                background-color: #27F59F !important;
                 color: #fff !important;
             }
 
@@ -141,6 +145,7 @@
             .this-card-overlay h4 {
                 margin: 0;
                 font-size: 30px;
+                color: lightgray;
             }
 
         .this-list {
@@ -213,7 +218,7 @@
                     @foreach (var drivers in Model.Drivers)
                     {
                         <div class="this-card">
-                            <a asp-controller="Drivers" asp-action="DriversDetails" asp-route-Id="@drivers.Id" style="text-decoration: none;">
+                            <a asp-controller="Drivers" asp-action="DetailsDrivers" asp-route-Id="@drivers.Id" style="text-decoration: none;">
                                 @if (!string.IsNullOrEmpty(drivers.ImageUrl))
                                 {
                                     <img src="@drivers.ImageUrl" alt="@drivers.Name" />
