@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "404 Page Not Found";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px 100px;
+            text-align: center;
+            border-radius: 25px;
+            background: orange;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 40px;
+            color: blue;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #dcdcdc;
+            margin: 25px 0px;
+        }
+
+        footer .container {
+            padding: 0px;
+        }
+
+        h4 {
+            margin-bottom: 30px !important;
+            color: blue;
+        }
+
+        .back-home {
+            background-color: #27CCF5 !important;
+            padding: 10px 30px;
+            color: #fff !important;
+            font-size: 1.2em;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+            .back-home:hover {
+                background-color: #27F59F !important;
+                color: #fff !important;
+            }
+    </style>
+</head>
+<body>
+    <h1>The Page You’re Looking for Cannot Be Found</h1>
+    <h2>404 Page Not Found</h2>
+    <p>
+        It seems that the page you're trying to reach does not exist or has been moved.
+    </p>
+    <h4><b>Sorry for the inconvenience</b></h4>
+
+    <a href="/" class="back-home">Back to Home</a>
+</body>
+</html>
